@@ -4,7 +4,7 @@
   "description": "a sample angular application containerized",
   "scripts": {
     "ng": "ng",
-    "start": "npx ng serve",
+    "start": "npx ng serve --host 0.0.0.0 --poll=500",
     "build": "npx ng build --prod dockerized-angular-app",
     "test": "ng test",
     "lint": "ng lint",
