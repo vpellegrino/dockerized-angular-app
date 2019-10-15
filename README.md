@@ -1,27 +1,50 @@
-# DockerizedAngularApp
+# Dockerized Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.9.
+Starting from a project, generated with [Angular CLI](https://github.com/angular/angular-cli), this application has been containerized for both *dev* and *prod* modes.
 
-## Development server
+## Available Scripts
+In the project directory, you can run:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### `npm install`
 
-## Code scaffolding
+Launches the dependencies installation.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### `npm build`
 
-## Build
+The build artifacts will be stored in the `dist/` directory, optimized for production.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### `npm test`
 
-## Running unit tests
+Executes the unit tests via [Karma](https://karma-runner.github.io).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### `npm e2e`
 
-## Running end-to-end tests
+Executes the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### `npm lint`
 
-## Further help
+Executes the static code analysis.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Docker commands
+
+### PROD
+Following commands can be used to build and run an image for the production environment:
+
+```
+docker build -t dockerized-angular-app .
+
+docker run -p 8080:80 dockerized-angular-app
+```
+
+Application will be visible, navigating with the browser to http://localhost:8080/
+
+### DEV
+There is the possibility to build and run this image in development mode, supporting hot reloading:
+
+```
+docker-compose up --build
+```
+
+Application will be visible, navigating with the browser to http://localhost:4200/
+
+Consider that each time you change a source file, the application gets automatically reloaded, because of the volume specified in `docker-compose.yaml`.
